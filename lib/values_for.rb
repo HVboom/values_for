@@ -40,7 +40,7 @@ module ValuesFor
         const_set(prefixed_val.upcase, val_s) if additives.include?(:constants)
         
         # Create +optional+ named scopes
-        named_scope prefixed_val, :conditions => { attribute => val_s } if additives.include?(:named_scopes)
+        scope prefixed_val, :conditions => { attribute => val_s } if additives.include?(:named_scopes)
 
         # Create +optional+ predicate methods, but don't overwrite existing methods
         if additives.include?(:predicate_methods) && !self.instance_methods.include?(prefixed_val)
